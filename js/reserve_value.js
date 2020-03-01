@@ -13,6 +13,6 @@ function reserve_value() {
         alert(data);
     })
     .fail( function() {
-        alert( "r_vjsfail" );
+        alert( "記録に失敗しました" );
     });
 }

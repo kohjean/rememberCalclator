@@ -15,7 +15,7 @@ function getColumnName() {
         } 
     })
     .fail( function() {
-        alert('のん');
+        alert('カラム名を取得できませんでした');
     })
 }
 

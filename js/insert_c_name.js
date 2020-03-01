@@ -12,6 +12,6 @@ $('#make_column').on('click', function() {
         alert( data + "の項目を追加しました");
     })
     .fail(function() {
-        alert( 'non' );
+        alert( 'カラム名の追加に失敗しました' );
     });
 });

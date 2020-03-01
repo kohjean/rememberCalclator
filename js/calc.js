@@ -4,7 +4,7 @@ var nums = [];
 var ope = '';
 var opes = [];
 
-// var totalInp = '';
+// displayに表示させる値　
 var disp = '0';
 
 // 演算子の重複入力検査用
@@ -15,69 +15,44 @@ var count = 0;
 $( '.num' ).on( 'click', function () {
   count = 0;
   $('.ope').prop({'disabled': false});
-  $( '#disp' ).text( '' );　
+  $( '#disp' ).text( '' );
   num += $( this ).text();
   $( '#disp' ).text( num );
 }); 
 
 // 演算子が押された時、連続して押されていないか判定する
-  // １回目の時 =================
+  // １回目の時 --------------------------------------
   // 入力されている値をnums配列に追加する
   // 押された演算子をopes配列に追加する
-  // totalInpに入力された値と演算子を追加し、画面に表示する
+  //  ------------------------------------------------
   $( '.ope' ).on( 'click', function () {
     if( count == 0 ) {
       nums.push( parseFloat(num, 10) );
       opes.push( $( this ).text() );
-      // totalInp += num;
-      // totalInp += $( this ).text();
-      // $( '#sub-disp' ).text( totalInp )
       num = '';
       count++;
     } else {
-      // 2回目以降の時
+      // 2回目以降の時 ================================
       // 演算子を上書きする
-      // totalInp = totalInp.slice(0, -1);
-      // totalInp += $( this ).text();
-      // $( '#sub-disp' ).text( totalInp )
+      // ============================================
       opes.pop();
       opes.push( $( this ).text() );
     }
   });
 
+// イコールが押されたら計算してディスプレイに表示させる =====================================
 $( '#equ' ).on( 'click', function () {
-  // document.getElementById('equ').disabled = true;
   if( count != 0 ) {
     opes.pop();
-  }  
+  }
   nums.push( parseFloat(num, 10) );
-  // totalInp += num;  
-  // $( '#sub-disp' ).text( totalInp )
-  // while (opes.length != 0) {
   primaryOpeCheck();
-  // }
   $( '#disp' ).text( nums[0] );
   num = nums[ 0 ];
   nums = [];
 });
-$( '#allClear' ).on( 'click', function() {
-  clear();
-});
 
-// ACボタンが押されると画面と保持したデータを初期化する ----------
-function clear() {
-  num = '';
-  // totalInp = '';
-  ope = '';
-  disp = '0';
-  nums = [];
-  opes = [];
-  $( '#disp' ).text( '0' );
-  $( '#sub-disp' ).text( '' );
-}
-// ---------------------------------------------------------
-
-
+// 優先する演算子を探し、先に計算する
 function primaryOpeCheck() {
   var n;
   var m;
@@ -103,7 +78,9 @@ function primaryOpeCheck() {
     hiku();
   }
 
-  // 計算式　演算子の位置を見て
+  // 計算式:演算子の位置を見てnums配列の同じ場所, 同じ場所+1の数字を計算する ---------------
+  // 1+2*3の時、 nums[1,2,3], opes['+','*']になる。
+  // '*'が先に計算されるので、"nums[1] opes[1] nums[2]"を展開した格好になる 
   function waru() {
     n = opes.indexOf( '÷' )
     m = nums[n] / nums[ n+1 ];
@@ -136,3 +113,20 @@ function primaryOpeCheck() {
     nums.splice( n, 0, m );
   }
 }
+// -------------------------------------------------------------------------
+// ==========================================================================
+
+// ACボタンが押されると画面と保持したデータを初期化する ---------------------------
+$( '#allClear' ).on( 'click', function() {
+  clear();
+});
+function clear() {
+  num = '';
+  ope = '';
+  disp = '0';
+  nums = [];
+  opes = [];
+  $( '#disp' ).text( '0' );
+  $( '#sub-disp' ).text( '' );
+}
+// ------------------------------------------------------------------------
