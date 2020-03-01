@@ -15,19 +15,19 @@ get_header("リメンバー・カリキュレーター");
     <button id="preserve-btn">preserve</button>
     <div id="grid">
         <button id="allClear" class="clear">AC</button>
-        <button id="divi" class="ope">÷</button>
+        <button id="divi" class="ope" disabled="true">÷</button>
         <button id="se" class="num">7</button>
         <button id="ei" class="num">8</button>
         <button id="ni" class="num">9</button>
-        <button id="mult" class="ope">×</button>
+        <button id="mult" class="ope" disabled="true">×</button>
         <button id="fo" class="num">4</button>
         <button id="fi" class="num">5</button>
         <button id="si" class="num">6</button>
-        <button id="min" class="ope">-</button>
+        <button id="min" class="ope" disabled="true">-</button>
         <button id="on" class="num">1</button>
         <button id="tw" class="num">2</button>
         <button id="th" class="num">3</button>
-        <button id="plu" class="ope">+</button>
+        <button id="plu" class="ope" disabled="true">+</button>
         <button id="ze" class="num">0</button>
         <button id="dot" class="num">.</button>
         <button id="equ">=</button>

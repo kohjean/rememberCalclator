@@ -11,8 +11,10 @@ var disp = '0';
 var count = 0;
 
 // 数字が押されたらcountを初期化し、入力された値を入力表示欄に表示する
+// 演算子ボタンのdisabled属性を'false'に変える
 $( '.num' ).on( 'click', function () {
   count = 0;
+  $('.ope').prop({'disabled': false});
   $( '#disp' ).text( '' );　
   num += $( this ).text();
   $( '#disp' ).text( num );
@@ -23,7 +25,6 @@ $( '.num' ).on( 'click', function () {
   // 入力されている値をnums配列に追加する
   // 押された演算子をopes配列に追加する
   // totalInpに入力された値と演算子を追加し、画面に表示する
-  // 
   $( '.ope' ).on( 'click', function () {
     if( count == 0 ) {
       nums.push( parseFloat(num, 10) );

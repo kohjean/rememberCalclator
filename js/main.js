@@ -11,18 +11,18 @@ $.ajax({
   alert('NG');
 });
 
-// 「記録を見る」の項目が変わったら該当する項目の値を取って表示する
+// 「記録を見る」のラベル名が変わったら該当するラベルの値を取って表示する
 $('#c_name').on('change', function() {
   getColumnName();
 });
 
-// getvalボタンがクリックされたらディスプレイに表示されている値が入る
+// getボタンがクリックされたらディスプレイに表示されている値が入る
 $('#getvalue').on('click', function() {
   var val = $('#disp').text();
   $('#res').val(val);
 });
 
-// 
+// 記録ボタンを押すと選択したラベルに値を追加する
 $('#res-btn').on( 'click', function() {
   reserve_value();
 });
